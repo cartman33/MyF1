@@ -20,6 +20,10 @@ public class F1ScheduleDTO {
     // 경기 시작 날짜 (ISO 8601 형식: "2026-03-15T00:00:00Z")
     private String dateStart;
     
+    // 경기 종료 날짜 (ISO 8601 형식: "2026-03-17T00:00:00Z")
+    // 전체 경기 기간(Start ~ End)을 표시하기 위해 추가된 필드
+    private String dateEnd;
+    
     // 경기 개최 국가
     private String countryName;
     

@@ -70,6 +70,7 @@ public class F1ScheduleService {
                     F1ScheduleDTO dto = new F1ScheduleDTO();
                     dto.setMeetingName(meeting.optString("meeting_name", "Unknown")); // 경기 이름
                     dto.setDateStart(meeting.optString("date_start", "")); // 시작 날짜
+                    dto.setDateEnd(meeting.optString("date_end", "")); // 종료 날짜 (전체 기간 표시용)
                     dto.setCountryName(meeting.optString("country_name", "Unknown")); // 국가명
                     dto.setLocation(meeting.optString("location", "Unknown")); // 도시명
                     dto.setMeetingKey(meeting.optInt("meeting_key", 0)); // 경기 고유 ID
