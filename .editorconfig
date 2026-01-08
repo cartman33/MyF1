@@ -1,0 +1,37 @@
+# EditorConfig는 다양한 에디터와 IDE에서 일관된 코딩 스타일을 유지하기 위한 설정 파일입니다.
+# https://editorconfig.org
+
+# 모든 파일에 적용되는 기본 설정
+root = true
+
+# 모든 파일에 대한 기본 설정
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Java 파일에 대한 설정
+[*.java]
+indent_style = space
+indent_size = 4
+
+# JavaScript/TypeScript 파일에 대한 설정
+[*.{js,jsx,ts,tsx}]
+indent_style = space
+indent_size = 2
+
+# JSON 파일에 대한 설정
+[*.json]
+indent_style = space
+indent_size = 2
+
+# YAML 파일에 대한 설정
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# Markdown 파일에 대한 설정
+[*.md]
+trim_trailing_whitespace = false
+

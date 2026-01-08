@@ -1,0 +1,54 @@
+// Spring Boot 플러그인 설정 - Spring Boot 애플리케이션을 빌드하기 위한 플러그인
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.0'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+// 프로젝트 그룹과 버전 정보
+group = 'com.myf1'
+version = '1.0.0'
+
+// Java 버전 설정 - Java 17을 사용
+java {
+    sourceCompatibility = '17'
+}
+
+// 의존성 저장소 설정 - Maven Central에서 라이브러리를 다운로드
+repositories {
+    mavenCentral()
+}
+
+// 프로젝트에 필요한 라이브러리 의존성 정의
+dependencies {
+    // Spring Boot Web Starter - RESTful API를 만들기 위한 기본 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Spring Boot Data JPA - 데이터베이스와의 상호작용을 위한 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // MySQL Connector - MySQL 데이터베이스와 연결하기 위한 드라이버
+    implementation 'com.mysql:mysql-connector-j:8.2.0'
+
+    // 추가: .env 파일을 읽어오기 위한 라이브러리
+    implementation 'me.paulschwarz:spring-dotenv:4.0.0'
+
+    // Lombok - 반복적인 코드(Getter, Setter 등)를 자동 생성해주는 라이브러리
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // JSON 라이브러리 - JSON 데이터를 파싱하고 생성하기 위한 라이브러리
+    implementation 'org.json:json:20231013'
+
+    // Spring Boot 개발 도구 - 개발 중 자동 재시작 등의 기능 제공
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // Spring Boot 테스트 라이브러리 - 단위 테스트를 위한 라이브러리
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+// 테스트 작업 설정
+tasks.named('test') {
+    useJUnitPlatform()
+}
+

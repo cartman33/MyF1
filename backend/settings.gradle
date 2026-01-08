@@ -1,0 +1,3 @@
+// 프로젝트 이름 설정
+rootProject.name = 'myf1-backend'
+

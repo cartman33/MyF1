@@ -1,0 +1,49 @@
+# Spring Boot 애플리케이션 설정 파일
+
+# 서버 포트 설정 - 백엔드 서버가 8080 포트에서 실행됨
+server:
+  port: 8080
+
+# Spring 애플리케이션 이름
+spring:
+  application:
+    name: myf1-backend
+
+  # 데이터베이스 연결 설정 - MySQL 연동 (활성화 완료)
+  datasource:
+    # 연동할 DB 주소입니다. f1_db는 MySQL Workbench에서 생성한 스키마 이름과 같아야 합니다.
+    # serverTimezone과 characterEncoding 설정을 추가하여 한글 깨짐과 시간 오류를 방지합니다.
+    url: jdbc:mysql://localhost:3306/f1_db?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    # .env 파일에서 MYSQL_USER 값을 가져오며, 값이 없을 경우 root를 기본값으로 사용합니다.
+    username: ${MYSQL_USER:root}
+    # .env 파일에서 MYSQL_PASSWORD 값을 가져와 소스 코드에 비밀번호가 노출되지 않도록 보안을 유지합니다.
+    password: ${MYSQL_PASSWORD}
+    # MySQL 8.0 이상 버전에서 사용하는 표준 드라이버 클래스입니다.
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # JPA 설정 - Java 객체(Entity)와 DB 테이블 매핑 설정 (활성화 완료)
+  jpa:
+    hibernate:
+      # ddl-auto: update 설정은 Java 코드의 엔티티 변경 사항을 인식하여 DB 테이블을 자동으로 생성/수정합니다.
+      # SQLD 공부 시 배우는 CREATE TABLE 과정을 자동화해주는 아주 편리한 기능입니다.
+      ddl-auto: update
+    # 실행되는 모든 SQL 쿼리문을 터미널에 출력하여 데이터의 흐름을 공부하고 디버깅하는 데 도움을 줍니다.
+    show-sql: true
+    properties:
+      hibernate:
+        # 터미널에 출력되는 SQL문을 보기 좋게 정렬(포맷팅)하여 출력합니다.
+        format_sql: true
+
+# Amadeus API 인증 정보 - .env 파일에서 환경 변수로 읽어옴
+# 환경 변수 또는 시스템 프로퍼티에서 값을 가져오기 위해 ${} 문법 사용
+# 기본값을 제공하여 값이 없을 경우 에러 방지
+amadeus:
+  api:
+    key: ${AMADEUS_API_KEY:}
+    secret: ${AMADEUS_API_SECRET:}
+
+# 로깅 레벨 설정 - 개발 중에는 DEBUG 레벨로 상세한 로그 출력
+logging:
+  level:
+    com.myf1: DEBUG
+    org.springframework.web: INFO
